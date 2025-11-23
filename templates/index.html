@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Home</title>
+</head>
+<body>
+    <h1>My Notes</h1>
+    <form action="/add" method ="POST">
+        <input type="text" name="content" placeholder="Write a note..." required>
+        <button type="submit">Add</button>
+    </form>
+
+    <ul>
+        {% for note in notes %}
+        <li>
+            {{ note.content }} _ {{ note.created_at.strftime("%Y-%m-%d %H:%M") }}
+            <a href="/delete/{{ note.id }}">❌</a>
+        </li>
+        {% endfor %}
+    </ul>
+    
+</body>
+</html>
